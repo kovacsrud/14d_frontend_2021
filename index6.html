@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Javascript ismétlés</title>
+        <link type="text/css" rel=stylesheet href="bekezdes.css">
+    </head>
+    <body>
+        <H1>Javascript programozás ismétlés</H1>
+        <div id="root"></div>
+        
+       
+        <script>
+            
+            function randomszin(){
+                var red=Math.floor(Math.random()*256).toString(16)
+                var green=Math.floor(Math.random()*256).toString(16)
+                var blue=Math.floor(Math.random()*256).toString(16)
+                
+                return "#"+red+green+blue
+                
+                
+            }
+            
+            
+            var root=document.getElementById('root') 
+            var bekezdes=document.createElement('p')
+            bekezdes.setAttribute('class','forma')
+            bekezdes.innerHTML="Bekezdés scriptből"
+            root.appendChild(bekezdes)
+            //Bővítse 20 további bekezdéssel a dokumentumot
+            //A bekezdés szövege sorszám+"bekezdés"
+            //ciklus
+            for(i=0;i<21;i++) {
+                let bekezdes=document.createElement('p')
+                bekezdes.setAttribute('class','forma')
+                
+                let fontsize=Math.floor(Math.random()*10)+20
+                //bekezdes.setAttribute('style','font-size:'+fontsize+'px')
+                bekezdes.setAttribute('style','font-size:'+fontsize+'px'+';'+'color:'+randomszin())
+                bekezdes.innerHTML=(i+1)+".bekezdés"
+                root.appendChild(bekezdes)
+            }
+            
+           
+            
+            
+        </script>
+    </body>
+</html>

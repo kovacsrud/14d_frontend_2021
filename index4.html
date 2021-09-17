@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Javascript ismétlés</title>
+    </head>
+    <body>
+        <H1>Javascript programozás ismétlés</H1>
+        <script>
+          //Függvények
+            function kiir(){
+                document.write("Függvény")
+            }    
+            
+            function osszeg(a,b,c){
+                return a+b+c
+            }
+                        
+            kiir()
+            document.writeln(osszeg(12,24,36))
+            document.writeln(osszeg(120,424,536))
+         //Arrow function
+            
+            const sum=(a,b,c)=>a+b+c
+            const osztas=(a,b)=>{return a/b}
+            
+            document.writeln(sum(10,20,30))
+            document.writeln(osztas(20,30))
+            
+            //Írjon egy olyan függvényt, amely tetszőleges 
+            //számú paramétert képes fogadni!
+            
+            function osszead(){
+                let osszeg=0
+                
+                for(i=0;i<arguments.length;i++) {
+                    osszeg+=arguments[i]
+                }
+                
+                return osszeg
+            }
+            
+            document.writeln(osszead(10,20))
+            document.writeln(osszead(10,20,30,40))
+            document.writeln(osszead(10,20,30,40,50,60,70))
+            
+            //Véletlen számok generálása
+            //egy és 10 közötti véletlen szám
+            document.writeln(Math.floor(Math.random()*10)+1)
+            //1 és 100 közötti véletlen szám
+            document.writeln(Math.floor(Math.random()*100)+1)
+            
+            
+            
+        </script>
+    </body>
+</html>
