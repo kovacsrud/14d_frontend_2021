@@ -23,5 +23,20 @@ Mire érdemes használni?
 Mire nem érdemes használni?
  - nagy számítási igényű műveletekhez
  - többszálú, nagy terhelést elbíró rendszerekhez nem jó
- - 
+ 
+ ## A Node Package Manager
+ 
+ A Node.JS Windows alá végtelenül egyszerűen telepíthető, és telepítést követően már használható is. Azonban az alap rendszer "csupasz", ezért az egyes feladatokhoz számos csomagot kell majd telepíteni. A csomagok kezelését az NPM (Node Package Manager) segítségével végezzük.
+ 
+Hozzunk létre egy node projektet!
+
+Először hozzunk létre egy mappát, amely a projekt mappája lesz.
+Indítsuk el a Visual Studio Code-ot.
+Nyissunk egy terminált, lépjünk be az előbb létrehozott mappába.
+Adjuk ki a következő parancsot:
+```javascript
+npm init -y
+```
+A -y hatására nem tesz fel kérdéseket az init, úgy veszi, hogy mindenre yes-t válaszoltunk. 
+ 
 
