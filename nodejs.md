@@ -38,5 +38,14 @@ Adjuk ki a következő parancsot:
 npm init -y
 ```
 A -y hatására nem tesz fel kérdéseket az init, úgy veszi, hogy mindenre yes-t válaszoltunk. 
- 
+
+Létrejön egy package.json nevű fájl amely a projekt konfigurációját tartalmazza.
+Hozzunk létre egy **index.js** nevú fájlt, és írjuk bele: **console.log("Node projekt")**
+
+Próbáljuk futtatni az **npm start** paranccsal.
+Hibát kapunk. Azért kapunk hibát, mert a konfigurációban nincsen megadva start script. A **scripts** részbe írjuk be:
+```js
+ "start":"node index.js"
+```
+Ezek után az npm start parancsot futtatva már megy a script.
 
