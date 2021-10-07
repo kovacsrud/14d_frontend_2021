@@ -1,0 +1,51 @@
+# Node.js ismeretek
+
+Ha röviden meg kellene határozni, hogy mit is a Node.js, akkor talán azt lehet mondani, hogy lehetőség arra, hogy a szerver oldalon Javascript kódot futtassunk. Tehát tulajdonképpen egy futtató környezetről van szó.
+
+Fontosabb tulajdonságai:
+ - tud bináris adatokat kezelni
+ - hozzáfér fájlrendszerhez, hálózathoz, processzekhez, socketekhez, streamekhez
+ - futtathatunk más programokat
+ - egy szálon fut
+ - kevés memóriát használ jól megírt programok esetén
+ - eseményvezérelt
+ - nem blokkoló I/O műveletek
+ - ha webszervert akarunk, meg kell írni
+
+Mire érdemes használni?
+ - fejlesztői segédalkalmazások
+ - stream szerver
+ - API kiszolgálás
+ - Live alkalmazások, pl. chat
+ - jól használható MongoDB-vel
+ - gyors
+
+Mire nem érdemes használni?
+ - nagy számítási igényű műveletekhez
+ - többszálú, nagy terhelést elbíró rendszerekhez nem jó
+ 
+ ## A Node Package Manager
+ 
+ A Node.JS Windows alá végtelenül egyszerűen telepíthető, és telepítést követően már használható is. Azonban az alap rendszer "csupasz", ezért az egyes feladatokhoz számos csomagot kell majd telepíteni. A csomagok kezelését az NPM (Node Package Manager) segítségével végezzük.
+ 
+Hozzunk létre egy node projektet!
+
+Először hozzunk létre egy mappát, amely a projekt mappája lesz.
+Indítsuk el a Visual Studio Code-ot.
+Nyissunk egy terminált, lépjünk be az előbb létrehozott mappába.
+Adjuk ki a következő parancsot:
+```javascript
+npm init -y
+```
+A -y hatására nem tesz fel kérdéseket az init, úgy veszi, hogy mindenre yes-t válaszoltunk. 
+
+Létrejön egy package.json nevű fájl amely a projekt konfigurációját tartalmazza.
+Hozzunk létre egy **index.js** nevú fájlt, és írjuk bele: **console.log("Node projekt")**
+
+Próbáljuk futtatni az **npm start** paranccsal.
+Hibát kapunk. Azért kapunk hibát, mert a konfigurációban nincsen megadva start script. A **scripts** részbe írjuk be:
+```js
+ "start":"node index.js"
+```
+Ezek után az npm start parancsot futtatva már megy a script.
+
