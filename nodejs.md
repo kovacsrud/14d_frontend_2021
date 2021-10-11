@@ -69,3 +69,14 @@ app.get('/',(req,res)=>{
 })
 ```
 Amennyiben a start script jól van beállítva, az **npm start** paranccsal a szerver elindul.
+
+Ha le kell állítani, akkor a CTRL+C paranccsal leállítható. Látszik, hogy fejlesztés közben, ha módosul a programunk, akkor a változtatások során le kell állítani, majd újra el kell indítani a szervert. Ez eléggé kényelmetlen, ezért érdemes feltelepíteni a **nodemon**-t.
+A telepítés parancsa:
+```js
+npm install --save-dev nodemon
+```
+A telepítés után a package.json-ban módosítsuk a start scriptet a következőre:
+```js
+ "start":"nodemon index.js"
+```
+A nodemon minden esetben újraindítja a szerverünket, amikor módosítunk a kódon(és mentjük).
