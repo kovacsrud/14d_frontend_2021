@@ -49,3 +49,23 @@ Hibát kapunk. Azért kapunk hibát, mert a konfigurációban nincsen megadva st
 ```
 Ezek után az npm start parancsot futtatva már megy a script.
 
+**Telepítés**
+
+Számos csomagot lehet telepíteni nodejs alá, melyekkel megkönnyíthető a fejlesztés.
+Szerverhez, különböző kiszolgáló tevékenységekhez az egyik legjobb az Express.
+Telepítése: 
+```js
+npm install express
+```
+Egy végtelenül egyszerű express kiszolgáló létrehozása:
+```js
+const express=require('express');
+const app=express();
+
+app.listen(8000,()=>{console.log("A szerver fut")})
+
+app.get('/',(req,res)=>{
+    res.send("Hello, node szerver vagyok");
+})
+```
+Amennyiben a start script jól van beállítva, az **npm start** paranccsal a szerver elindul.
