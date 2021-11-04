@@ -80,3 +80,12 @@ A telepítés után a package.json-ban módosítsuk a start scriptet a következ
  "start":"nodemon index.js"
 ```
 A nodemon minden esetben újraindítja a szerverünket, amikor módosítunk a kódon(és mentjük).
+
+## Rest (RESTful) API műveletek
+ - GET (adatok lekérése)
+ - POST (új adat felvitele)
+ - PUT (adat módosítás)
+ - PATCH (adat módosítás)
+ - DELETE (adat törlése)
+
+Egy API készítése során ezeket a műveleteket kell részben, vagy egészben megvalósítani.
