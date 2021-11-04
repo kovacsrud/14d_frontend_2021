@@ -38,8 +38,25 @@ app.get('/ember/:id',(req,res)=>{
 
 app.post('/ember',(req,res)=>{
     //Itt valósítjuk meg az új adat feldolgozását
-   
+   let id=req.body.id;
+   let nev=req.body.nev;
+   let kor=req.body.kor;
+   let ember=new Ember(id,nev,kor);
+   adatok.push(ember);
     
-    res.send("Kérés megérkezett");
+    //res.send("Kérés megérkezett");
+    res.send(id+','+nev+','+kor);
    
+});
+app.put('/ember/:id',(req,res)=>{
+    let id=req.params.id;
+    let ember=adatok.find(x=>x.id==id);
+    if(ember!=null){
+        ember.nev=req.body.nev;
+        ember.kor=req.body.kor;
+        res.send("Adatok módosítva!");
+    } else {
+        res.send("Nincs ilyen ember");
+    }
+
 });
