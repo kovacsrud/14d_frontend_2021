@@ -89,3 +89,52 @@ A nodemon minden esetben újraindítja a szerverünket, amikor módosítunk a k�
  - DELETE (adat törlése)
 
 Egy API készítése során ezeket a műveleteket kell részben, vagy egészben megvalósítani.
+
+## API építése Sqlite adatbázis háttérrel
+
+A korábbi példák segítségével már láthatóvá vált, hogy hogyan néz ki egy API, azonban ott az adatbázist egy Javascript tömbbel helyettesítettük. Használjunk adatbázist, kezdetnek Sqlite-ot. 
+
+Hozzunk létre egy node projektet:
+```js
+npm init -y
+```
+Telepítsük a szükséges szoftvereket:
+Express a kiszolgáláshoz:
+```js
+npm install express
+```
+Cors, hogy cross-origin kérések is rendben menjenek.
+```js
+npm install cors
+```
+Nodemon, hogy ne kézzel kelljen újraindítgatni a szervert
+```js
+npm install --save-dev nodemon
+```
+Sqlite 3
+```js
+npm install sqlite3
+```
+Cross-fetch
+```js
+npm install --save cross-fetch
+```
+A kiinduló konfigurációja a szervernek:
+```js
+const express=require('express');
+const cors=require('cors');
+const app=express();
+const sqlite3=require('sqlite3');
+const  db_alldata  = require('./dbfunc');
+const db=new sqlite3.Database('./autok.db');
+
+app.use(cors());
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+
+app.listen(8000,()=>{console.log('A szerver fut')});
+
+app.get('/',(req,res)=>{
+    res.send('Autók adatbázis');
+});
+```
