@@ -41,3 +41,24 @@ app.get('/alldata2',(req,res)=>{
 
     });
 });
+
+app.post('/ujauto',(req,res)=>{
+    var rendszam=req.body.rendszam;
+    var marka=req.body.marka;
+    var tipus=req.body.tipus;
+    var szin=req.body.szin;
+    var gyartasiev=req.body.gyartasiev;
+    db.run("insert into autok values(?,?,?,?,?)",
+    [rendszam,
+    marka,
+    tipus,
+    szin,
+    gyartasiev],
+    error=>{
+        if(error){
+            res.send(error);
+        } else {
+            res.status(200).json({status:"Ok",message:'Adatok beszúrva'});
+        }
+    });
+});
