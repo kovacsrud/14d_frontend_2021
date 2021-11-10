@@ -138,3 +138,55 @@ app.get('/',(req,res)=>{
     res.send('Autók adatbázis');
 });
 ```
+### SQL lekérdezés
+```js
+app.get('/alldata2',(req,res)=>{
+    db.all("select * from autok",(error,rows)=>{
+        if(error){
+            res.send(error);
+        } else {
+            res.json(rows);
+        }
+
+    });
+});
+```
+### Új adat felvitele
+```js
+app.post('/ujauto',(req,res)=>{
+    db_repo.db_insert(db,req.body)
+    .then(eredmeny=>{res.status(200).json(eredmeny)})
+    .catch(error=>{res.send(error)});
+});
+```
+
+### Kliens js az új adat elküldéséhez
+```js
+const fetch=require('cross-fetch');
+
+let ujauto={
+    rendszam:"zqk-630",
+    marka:"Opel",
+    tipus:"Corsa",
+    szin:"zöld",
+    gyartasiev:2006
+}
+
+async function ujadat(){
+
+    const res=await fetch('http://127.0.0.1:8000/ujauto',{
+        method:'post',
+        headers:{'Content-type':'application/json'},
+        body:JSON.stringify(ujauto)
+    });
+
+    const valasz=await res.json();
+
+    console.log(valasz);
+
+}
+
+
+ujadat();
+
+```
