@@ -154,24 +154,9 @@ app.get('/alldata2',(req,res)=>{
 ### Új adat felvitele
 ```js
 app.post('/ujauto',(req,res)=>{
-    var rendszam=req.body.rendszam;
-    var marka=req.body.marka;
-    var tipus=req.body.tipus;
-    var szin=req.body.szin;
-    var gyartasiev=req.body.gyartasiev;
-    db.run("insert into autok values(?,?,?,?,?)",
-    [rendszam,
-    marka,
-    tipus,
-    szin,
-    gyartasiev],
-    error=>{
-        if(error){
-            res.send(error);
-        } else {
-            res.status(200).json({status:"Ok",message:'Adatok beszúrva'});
-        }
-    });
+    db_repo.db_insert(db,req.body)
+    .then(eredmeny=>{res.status(200).json(eredmeny)})
+    .catch(error=>{res.send(error)});
 });
 ```
 
