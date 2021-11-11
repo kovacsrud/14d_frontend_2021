@@ -80,6 +80,11 @@ Az elemet a ReactDOM.render() függvény fogja renderelni, ez két paramétert v
 
 A JSX szintaxis jelentősen képes megkönnyíteni a React-el végzett fejlesztést. Probléma viszont, hogy a böngészők nem ismerik ezt a szintaxist, ezért egy fordító segítségével le kell a .jsx szintakszissal írt kódokat fordítani a böngésző számára értelmezhető formára. Ez a fordító a Babel. A Babel-t hozzá lehet adni a projekthez, ami automatikusan átfordítja majd a .jsx-et .js-re.
 
+Inicializáljunk egy projektet:
+```js
+npm init -y
+```
+
 A Babel telepítése  a projektbe:
 ```js
 npm install babel-cli@6 babel-preset-react-app@3
