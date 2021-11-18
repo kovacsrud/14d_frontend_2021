@@ -7,3 +7,11 @@ A mongoban is értelmezett az adatbázis fogalma, azonban az adatbázis kollekci
 A kollekciók dokumentumokat tárolnak, a dokumentum a relációs adatbázis-kezelés rekordjának felel meg. 
 Jelentős különbség, hogy a dokumentumok felépítésére nincs alaphelyzetben kötöttség, de természetesen megoldható, hogy egy dokumentum megfeleljen egy adott sémának. A relációs adatbázisok felépítésére jóval több szabály van (normálformák).
 
+## Lekérdezés, adatszűrés
+
+A Compass programban van lehetőség az adatok lekérdezésére, szűrésére. A filter sorba kell beírni a szűrési kifejezést:
+
+Kérdezzük le a Ford autók adatait:
+```mongodb
+{gyartmany:"Ford"}
+```
