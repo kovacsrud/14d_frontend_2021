@@ -15,3 +15,7 @@ Kérdezzük le a Ford autók adatait:
 ```mongodb
 {gyartmany:"Ford"}
 ```
+Beágyazott objektum mezőjének elérése:
+```mongodb
+{"forgalmi.sorszam":12234566}
+```
