@@ -36,3 +36,8 @@ Az összehasonlító operátorok:
 ## Reguláris kifejezések
 
 A reguláris kifejezések szövegekben való keresésre szolgálnak. Szinte minden nyelv implementálja ezeket, itt is használhatóak azokra a keresési feladatokra, amelyeket SQL-ben a **like** függvénnyel lehet megoldani.
+
+Melyik rendszám tartalmaz nagy B-t? (A rendszámot az \_id tárolja, ne feledjük.)
+```
+{_id:{$regex:'B'}}
+```
