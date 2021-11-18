@@ -19,3 +19,16 @@ Beágyazott objektum mezőjének elérése:
 ```mongodb
 {"forgalmi.sorszam":12234566}
 ```
+Szám típusoknál összehasonlító műveletek(ahol a gyartasiev >=2007 és <=2010
+```
+{gyartasiev:{$gte:2007,$lte:2010}}
+```
+Az összehasonlító operátorok:
+ - $lte - lower than or equal
+ - $lt -lower than
+ - $gte - greater than or equal
+ - $gt - greater than
+ - $eq - eqal
+ - $ne - not equal
+ - $in - eleme-e egy tömbnek
+ - $nin - not in (nem eleme egy tömbnek)
