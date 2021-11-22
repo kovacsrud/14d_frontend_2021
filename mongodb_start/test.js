@@ -7,6 +7,8 @@ async function dbLista(client){
 
 }
 
+
+
 async function ujAuto(client,auto){
     const eredmeny=await client
     .db("autodb")
@@ -14,6 +16,25 @@ async function ujAuto(client,auto){
     .insertOne(auto);
 
     console.log(`Beszúrva:${eredmeny.insertedId}`);
+}
+
+
+async function updateAuto(client,gyartmany,updateData){
+    const eredmeny=await client
+    .db("autodb")
+    .collection("autok")
+    .updateOne({'gyartmany':gyartmany},{$set:updateData});
+    console.log(eredmeny.matchedCount);
+    console.log(eredmeny.modifiedCount);
+
+}
+
+async function deleteAuto(client,rendszam){
+    const eredmeny=await client
+    .db("autodb")
+    .collection("autok")
+    .deleteOne({'_id':rendszam});
+    console.log(eredmeny.deletedCount);
 }
 
 async function dbGetRendszam(client,rendszam){
@@ -42,13 +63,16 @@ async function dbtest(){
         //adatbázis műveletek
         await dbLista(client);
         await dbGetRendszam(client,"ZHG-119");
-        const auto={
+        /*const auto={
             _id:"VGD-622",
             gyartmany:"Skoda",
             tipus:"Superb",
             gyartasiev:"2011"
-        }
-        await ujAuto(client,auto);
+        }*/
+        //await ujAuto(client,auto);
+        await updateAuto(client,"Volkswagen",{tipus:'Bora'});
+        await deleteAuto(client,"VGD-622");
+       
 
     }catch(e)
     {
