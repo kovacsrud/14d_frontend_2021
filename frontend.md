@@ -131,7 +131,7 @@ function Valaszto(){
 
 export default Valaszto;
 ```
-Probléma, hogy ebből a komponensből közvetlenül nem lehet hívni a listaMeret beállító függvényét, ahhoz hogy ezt meg lehessen tenni, át kell adni azt:
+Probléma, hogy ebből a komponensből közvetlenül nem lehet hívni a listaMeret beállító függvényét, ahhoz hogy ezt meg lehessen tenni, át kell adni azt. Látszik, hogy a legördülő menü onChange eseményéhez kötjük a listaméret beállítását, az átadott érték az aktuálisan kiválasztott lesz.
 A teljes Valaszto.js:
 ```js
 function Valaszto({setListaMeret}){
@@ -152,7 +152,7 @@ function Valaszto({setListaMeret}){
 
 export default Valaszto;
 ```
-Hozzunk létre egy komponenst Listaelem.js néven, amely a lista egy elemét jeleníti majd meg, melynek a neve Listaelem:
+Hozzunk létre egy komponenst Listaelem.js néven, amely a lista egy elemét jeleníti majd meg, melynek a neve Listaelem. A komponens a lista egy elemét kapja meg.
 ```js
 function Listaelem({elem}){
     return (
@@ -164,7 +164,7 @@ function Listaelem({elem}){
 }
 export default Listaelem;
 ```
-Hozzunk létre egy komponenst Lista.js néven  amely a listát létrehozza. Itt be kell importálni a Listaelem komponensünket:
+Hozzunk létre egy komponenst Lista.js néven  amely a listát létrehozza. Itt be kell importálni a Listaelem komponensünket. A komponensa teljes listát kapja meg, ezt dolgozzuk fel a map függvénnyel.
 ```js
 import Listaelem from "./Listaelem";
 
