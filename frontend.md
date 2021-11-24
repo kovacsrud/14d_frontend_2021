@@ -152,3 +152,15 @@ function Valaszto({setListaMeret}){
 
 export default Valaszto;
 ```
+Hozzunk létre egy komponenst Listaelem.js, amely a lista egy elemét jeleníti majd meg, melynek a neve Listaelem:
+```js
+function Listaelem({elem}){
+    return (
+        <div>
+            <h2>{elem.name.first},{elem.name.last}</h2>
+            
+        </div>
+    );
+}
+export default Listaelem;
+```
