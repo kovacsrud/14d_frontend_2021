@@ -94,3 +94,9 @@ A telepítést követően a package.json-ba tegyük be a következő sort a scri
 "dev":"npx babel --watch src --out-dir . --presets react-app/prod" 
 ```
 Ezután az **npm run dev** parancs hatására a Babel fut és a .jsx fájl mentésekor lefordítja ezt .js-re.
+
+# Create react app használata
+A React fejlesztői nem csak a React könyvtárakat, hanem egy fejlesztői környezetet is a rendelkezésünkre bocsátanak Single Page App-ok készítéséhez. Az SPA alkalmazások esetében csak egy oldalletöltés történik, ha az alkalmazásnak valamilyen adatra van szüksége, akkor AJAX kérések formájában szerzi be a szükséges adatokat, JSON formátumban (pl.fetch).
+
+## Készítsünk egy ilyen alkalmazást!
+Először is készítsünk az alkalmazásnak egy új mappát, majd adjuk ki az **npx create-react-app .** parancsot. A parancs végi **.** fontos, mert akkor az aktuális mappába fog kerülni az alkalmazás. Ha a parancsot így adjuk ki: **npx create-react-app ujapp** akkor létre fog jönni egy új mappa ujapp néven, és abba kerülnek az app fájljai.
