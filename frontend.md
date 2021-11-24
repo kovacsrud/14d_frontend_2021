@@ -152,7 +152,7 @@ function Valaszto({setListaMeret}){
 
 export default Valaszto;
 ```
-Hozzunk létre egy komponenst Listaelem.js, amely a lista egy elemét jeleníti majd meg, melynek a neve Listaelem:
+Hozzunk létre egy komponenst Listaelem.js néven, amely a lista egy elemét jeleníti majd meg, melynek a neve Listaelem:
 ```js
 function Listaelem({elem}){
     return (
@@ -163,4 +163,18 @@ function Listaelem({elem}){
     );
 }
 export default Listaelem;
+```
+Hozzunk létre egy komponenst Lista.js néven  amely a listát létrehozza. Itt be kell importálni a Listaelem komponensünket:
+```js
+import Listaelem from "./Listaelem";
+
+function Lista({lista}){
+    return (
+        <div>
+            {lista.map((elem)=>(<Listaelem elem={elem} />))}
+        </div>
+    );
+
+}
+export default Lista;
 ```
