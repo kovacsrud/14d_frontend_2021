@@ -110,4 +110,45 @@ Az órai példát tovább bővítve (vagy akár újat készítve) készítsünk 
 Ez önálló komponens lesz.
 A komponensek a components mappába kerülnek, ha még nincs ilyen, akkor létre kell hozni.
 
+Az App komponensünkbe kell egy újabb state változó, ebben tároljuk majd a kívánt listaméretet. Ezt most az 5 értékkel inicializáljuk.
+A változó a listaMeret, a beállító függvény a setListaMeret.
+```js
+function App() {
+  const [listaMeret,setListaMeret]=useState(5);
+  const [lista,setLista]=useState([]);
+  ...
+```
+Hozzunk létre egy Valaszto.js fájlt a components mappában. Kerüljük az ékezetes betűket a fájlnévben. 
+A kiinduló állapot:
+```js
+function Valaszto(){
+    return (
+        <div>
+                                    
+        </div>
+    );
+}
 
+export default Valaszto;
+```
+Probléma, hogy ebből a komponensből közvetlenül nem lehet hívni a listaMeret beállító függvényét, ahhoz hogy ezt meg lehessen tenni, át kell adni azt:
+A teljes Valaszto.js:
+```js
+function Valaszto({setListaMeret}){
+    return (
+        <div>
+            
+            <select name="listaMeret" onChange={(e)=>setListaMeret(e.target.value)}>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="40">40</option>
+                <option value="60">60</option>
+            </select>
+            
+        </div>
+    );
+}
+
+export default Valaszto;
+```
