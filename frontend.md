@@ -178,3 +178,35 @@ function Lista({lista}){
 }
 export default Lista;
 ```
+Az App komponensünk most így néz ki:
+```js
+
+
+import Valaszto from './components/Valaszto'
+import {useState,useEffect} from 'react';
+import Lista from './components/Lista'
+
+function App() {
+  const [listaMeret,setListaMeret]=useState(5);
+  const [lista,setLista]=useState([]);
+
+  useEffect(()=>{
+    fetch(`https://randomuser.me/api/?results=${listaMeret}`)
+    .then(res=>res.json())
+    .then(adat=>{
+      setLista(adat.results);
+      console.log(adat);
+      })
+    .catch(console.log)
+  },[listaMeret]);
+
+  return (
+    <div>
+      <Valaszto setListaMeret={setListaMeret} />
+      <Lista lista={lista} />
+    </div>
+  );
+}
+
+export default App;
+```
