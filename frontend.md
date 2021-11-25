@@ -228,4 +228,10 @@ function Listaelemdetail({elem}){
 }
 export default Listaelemdetail;
 ```
-A működése egyszerű, a kom
+A működése egyszerű, a komponens megkapja a listaelemet, és abból kinyeri az információkat.
+
+Módosítsuk a Listaelem komponenst, hogy meg tudja jeleníteni a Listaelemdetail-t.
+Először is kell egy state, amellyel jelezzük, hogy megjelenjenek-e a részletek, ezt false értékkel inicializáljuk.
+```js
+ const [isDetail,setDetail]=useState(false);
+```
