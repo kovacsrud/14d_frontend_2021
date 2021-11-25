@@ -210,3 +210,22 @@ function App() {
 
 export default App;
 ```
+## Jelenítsük meg a lista részleteit!
+A névsor megjelenik, azonban az egyes emberek adatai még nem. Nem szeretnénk azonban, hogy a névsor minden emberének adatai megjelenjenek, hanem csak annak az embernek az adatai jelenjenek meg, akire a listában rákattintottak. Ehhez kell egy új komponens.
+Hozzunk létre Listaelemdetail.js néven egy új komponenst, ami így fog kinézni:
+```js
+function Listaelemdetail({elem}){
+    return (
+        <div>
+            <h3>Age:{elem.dob.age}</h3>
+            <h4>Country:{elem.location.country}</h4>
+            <h4>City:{elem.location.city}</h4>
+            <h4>Street:{elem.location.street.name},{elem.location.street.number}</h4>
+            <img src={elem.picture.large}></img>
+            
+        </div>
+    );
+}
+export default Listaelemdetail;
+```
+A működése egyszerű, a kom
