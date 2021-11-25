@@ -235,7 +235,7 @@ Először importáljuk be a Listaelemdetail-t
 ```js
 import Listaelemdetail from './Listaelemdetail';
 ```
-Először is kell egy state, amellyel jelezzük, hogy megjelenjenek-e a részletek, ezt false értékkel inicializáljuk.
+Kell egy state, amellyel jelezzük, hogy megjelenjenek-e a részletek, ezt false értékkel inicializáljuk.
 ```js
  const [isDetail,setDetail]=useState(false);
 ```
