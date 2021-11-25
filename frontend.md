@@ -210,6 +210,7 @@ function App() {
 
 export default App;
 ```
+Vegyük észre, hogy a useEffect-nél a [] közé megadtuk a listaMeret változót, ezáltal minden alkalommal, amikor a listaMeret változik, a fetch újra lekéri a megfelelő adatokat.
 ## Jelenítsük meg a lista részleteit!
 A névsor megjelenik, azonban az egyes emberek adatai még nem. Nem szeretnénk azonban, hogy a névsor minden emberének adatai megjelenjenek, hanem csak annak az embernek az adatai jelenjenek meg, akire a listában rákattintottak. Ehhez kell egy új komponens.
 Hozzunk létre Listaelemdetail.js néven egy új komponenst, ami így fog kinézni:
