@@ -231,7 +231,38 @@ export default Listaelemdetail;
 A működése egyszerű, a komponens megkapja a listaelemet, és abból kinyeri az információkat.
 
 Módosítsuk a Listaelem komponenst, hogy meg tudja jeleníteni a Listaelemdetail-t.
+Először importáljuk be a Listaelemdetail-t
+```js
+import Listaelemdetail from './Listaelemdetail';
+```
 Először is kell egy state, amellyel jelezzük, hogy megjelenjenek-e a részletek, ezt false értékkel inicializáljuk.
 ```js
  const [isDetail,setDetail]=useState(false);
+```
+A DIV elem onClick eseményéhez rendeljük a state változtatását:
+```js
+onClick={()=>{setDetail(!isDetail)}}
+```
+Ezt az isDetail értéket figyeljük. Ha true, akkor megjelenítjük a részleteket, ha false akkor nem.
+```js
+ {isDetail ? <div><h2>{elem.name.first},{elem.name.last}</h2><Listaelemdetail elem={elem}/></div>  : <h2>{elem.name.first},{elem.name.last}</h2> }
+```
+A ListaElem komponensünk most így néz ki:
+```js
+import {useState} from 'react';
+import Listaelemdetail from './Listaelemdetail';
+
+function Listaelem({elem}){
+    const [isDetail,setDetail]=useState(false);
+    return (
+        <div onClick={()=>{setDetail(!isDetail)}}>
+
+            {isDetail ? <div><h2>{elem.name.first},{elem.name.last}</h2><Listaelemdetail elem={elem}/></div>  : <h2>{elem.name.first},{elem.name.last}</h2> }
+
+            
+            
+        </div>
+    );
+}
+export default Listaelem;
 ```
