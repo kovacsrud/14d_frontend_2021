@@ -1,0 +1,88 @@
+Struktúrált programozás, programok
+-szekvencia,szelekció,iteráció elemeibõl állnak
+
+Az ismétlõdõ összetett tevékenységek megvalósításához eljárásokat, függvényeket használnak.
+
+Pl.
+start->adatbekérések->számítások, mûveletek->stop
+
+Szoftver krízis -> Innentõl jött az OOP megközelítés
+
+OOP -> A megközelítés alapegysége az osztály(class) az osztály olyan mint egy
+terv, az osztály alapján tetszõleges számú objektum példány létrehozható a 
+programban
+
+az osztály tartalmaz
+-adatokat (adatmezõ(field), property)
+-metódusokat (ezek gyakorlatilag függvények, visszatérési értékkel, vagy anélkül(void)
+
+pl.
++--------------------------------+
+|                                |
+|Ember                           |
++--------------------------------+
+|Név                             |
+|Születési Dátum                 |
+|AnyjaNeve                       |
+|Magasság                        |
+|Súly                            |
+|                                |
++--------------------------------+
+|                                |
+| KiirNev()                      |
+| KiirKor()                      |
+| .                              |
+| .                              |
+| .                              |
++--------------------------------+
+
+Láthatóság:
+-private -> csak az osztályon belül látható a változó
+-public -> "mindenhonnan" látható
+-protected -> csak az adott osztályban és az abból leszármaztatott osztályokban lesz látható a változó
+
+Egységbe zárás:
+
+Az osztály csak azokhoz az adatokhoz/metódusokhoz enged hozzáférést kívülrõl
+amelyekhez ez szükséges. Az osztály adatai általában el vannak rejtve, és csak metódusokon keresztül állíthatóak be/módosíthatóak. A metóduson keresztüli elérés képes biztosítani azt, hogy az adat ne kaphasson olyan értéket, amely nem megfelelõ számára. 
+
+Polimorfizmus(többalakúság) -> Ugyanarra az "üzenetre" a példányok eltérõen reagálnak.
+
+pl. Szamitas()->(a+b)  
+egy másik osztálynak is lehet Szamitas()-> (a+b)*(a-b)/2*b*a
+
+Öröklõdés:
+Egy adott osztály továbbfejlesztése új adatok és metódusok hozzáadásával.
+Az utód osztály mindent "tudni" fog amit az õs osztály is tudott.
+
+Static: csak egy példány létezhet a statikusnak deklarált változóból
+
+Interfészek: Felületet biztosít ahhoz, hogy egyébként eltérõ osztályokat azonos típusként kezelhessünk.
+
+Metódusneveket lehet az interfészben deklarálni, és azt, hogy ez a metódus mit fog csinálni, azt majd abban az osztályban adjuk meg amelyik megvalósítja az adott interfészt.
+
+Virtuális metódusok -> az utód osztályban felülírható, megváltoztatható
+(override) Az override kulcsszóval felülírható az õs osztály metódusa.
+
+Osztály felépítés, hierarchia
+
+Milyen programozási módszertanokat ismer.
+SSADM
+SCRUM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
