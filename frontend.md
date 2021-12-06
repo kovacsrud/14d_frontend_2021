@@ -267,3 +267,14 @@ function Listaelem({elem}){
 }
 export default Listaelem;
 ```
+## Bootstrap használata React alkalmazásokban.
+
+Telepítsük a Bootstrap-et az alkalmazásunkhoz:
+```js
+npm install --save bootstrap
+```
+Az index.js-be tegyük be a következőt:
+```js
+import 'bootstrap/dist/css/bootstrap.css';
+```
+Innentől kezdve használhatjuk a Bootstrap stílusait az alkalmazásunkban, arra kell ügyelni, hogy class="stilus" helyett className="stilus" amit használni kell.
