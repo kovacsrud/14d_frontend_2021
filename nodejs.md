@@ -190,3 +190,180 @@ async function ujadat(){
 ujadat();
 
 ```
+## Teljes funkcionalitású API
+Azért, hogy ne a végpontoknál szerepeljenek az adatbázis műveletek, ezért külön fájlba tesszük őket. Az adatbázis műveletek Promise-ba ágyazva futnak, hogy aszinkron módon is használhassuk őket.
+```js
+module.exports.db_all=function(db){
+    return new Promise((reject,resolve)=>{
+        db.all("select * from autok",(error,rows)=>{
+            if(error){
+                reject("Error:"+error);
+            }
+            else {
+                resolve(rows);
+            }
+
+        });
+    });
+}
+
+module.exports.db_insert=function(db,{rendszam,marka,tipus,szin,gyartasiev}){
+    return new Promise((reject,resolve)=>{
+        db.run("insert into autok values(?,?,?,?,?)",[rendszam,marka,tipus,szin,gyartasiev],error=>{
+            if(error){
+                reject(error);
+            } else {
+                resolve({status:"Ok",message:"Adat beillesztve"});
+            }
+        });
+    });
+
+}
+
+module.exports.db_update=function(db,{rendszam,marka,tipus,szin,gyartasiev}){
+    return new Promise((reject,resolve)=>{
+        db.run("update autok set marka=?,tipus=?,szin=?,gyartasiev=? where rendszam=?",[marka,tipus,szin,gyartasiev,rendszam],error=>{
+            if(error){
+                reject(error);
+            } else {
+                resolve({status:"Ok",message:"Adat módosítva"});
+            }
+        });
+    });
+}
+
+module.exports.db_delete=function(db,{rendszam}){
+    return new Promise((reject,resolve)=>{
+        db.run("delete from autok where rendszam=?",[rendszam],error=>{
+            if(error){
+                reject(error);
+            } else {
+                resolve({status:"Ok",message:"Adat törölve"});
+            }
+          
+        });
+    })
+    
+}
+```
+### Az index.js így fog kinézni, látható, hogy a végpontoknál csak a promise-okat kell meghívni.
+```js
+const express=require('express');
+const app=express();
+const sqlite3=require('sqlite3');
+const cors=require('cors');
+const db_repo=require('./dbfunc');
+const db=new sqlite3.Database('./autok.db');
+
+ 
+app.use(cors());
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+
+app.listen(8000,()=>{
+    console.log("Fut a szerver");
+});
+
+app.get('/',(req,res)=>{
+    res.send("Autók adatbázis");
+});
+
+app.get('/alldata',async(req,res)=>{
+    
+    db_repo.db_all(db)
+    .then(eredmeny=>{res.json(eredmeny)})
+    .catch(error=>{res.send(error)});
+    
+});
+
+
+app.post('/ujauto',async (req,res)=>{
+    
+    db_repo.db_insert(db,req.body)
+    .then(eredmeny=>{res.status(200).json(eredmeny)})
+    .catch(error=>{res.send(error)});
+           
+        
+});
+
+app.put('/updateauto',async (req,res)=>{
+
+    db_repo.db_update(db,req.body)
+    .then(eredmeny=>{res.status(200).json(eredmeny)})
+    .catch(error=>{res.send(error)});
+
+});
+
+app.delete('/deleteauto',async(req,res)=>{
+
+    db_repo.db_delete(db,req.body)
+    .then(eredmeny=>{res.status(200).json(eredmeny)})
+    .catch(error=>{res.send(error)});
+});
+```
+### A kliens:
+```js
+const fetch=require('cross-fetch');
+
+let ujauto={
+    rendszam:"zqk-699",
+    marka:"Opel",
+    tipus:"Corsa",
+    szin:"zöld",
+    gyartasiev:2006
+}
+
+let updateauto={
+    rendszam:"zqk-699",
+    marka:"Volkswagen",
+    tipus:"Touran",
+    szin:"szürke",
+    gyartasiev:2009
+}
+
+async function ujadat(){
+
+    const res=await fetch('http://127.0.0.1:8000/ujauto',{
+        method:'post',
+        headers:{'Content-type':'application/json'},
+        body:JSON.stringify(ujauto)
+    });
+
+    const valasz=await res.json();
+
+    console.log(valasz);
+
+}
+
+async function updateadat(){
+
+    const res=await fetch('http://127.0.0.1:8000/updateauto',{
+        method:'put',
+        headers:{'Content-type':'application/json'},
+        body:JSON.stringify(updateauto)
+    });
+
+    const valasz=await res.json();
+
+    console.log(valasz);
+
+}
+
+async function deleteadat(){
+
+    const res=await fetch('http://127.0.0.1:8000/deleteauto',{
+        method:'delete',
+        headers:{'Content-type':'application/json'},
+        body:JSON.stringify(updateauto)
+    });
+
+    const valasz=await res.json();
+
+    console.log(valasz);
+
+}
+
+//ujadat();
+//updateadat();
+deleteadat();
+```
