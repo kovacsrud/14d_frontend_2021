@@ -278,3 +278,8 @@ Az index.js-be tegyük be a következőt:
 import 'bootstrap/dist/css/bootstrap.css';
 ```
 Innentől kezdve használhatjuk a Bootstrap stílusait az alkalmazásunkban, arra kell ügyelni, hogy class="stilus" helyett className="stilus" amit használni kell.
+
+Nem csak stílusokat, hanem Bootstrap ikonokat is használhatunk, ebben az esetben az index.html fejlécébe tegyük a következőt:
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+```
