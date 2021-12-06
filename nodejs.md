@@ -246,7 +246,7 @@ module.exports.db_delete=function(db,{rendszam}){
     
 }
 ```
-Az index.js így fog kinézni, látható, hogy a végpontoknál csak a promise-okat kell meghívni.
+### Az index.js így fog kinézni, látható, hogy a végpontoknál csak a promise-okat kell meghívni.
 ```js
 const express=require('express');
 const app=express();
@@ -300,4 +300,70 @@ app.delete('/deleteauto',async(req,res)=>{
     .then(eredmeny=>{res.status(200).json(eredmeny)})
     .catch(error=>{res.send(error)});
 });
+```
+### A kliens:
+```js
+const fetch=require('cross-fetch');
+
+let ujauto={
+    rendszam:"zqk-699",
+    marka:"Opel",
+    tipus:"Corsa",
+    szin:"zöld",
+    gyartasiev:2006
+}
+
+let updateauto={
+    rendszam:"zqk-699",
+    marka:"Volkswagen",
+    tipus:"Touran",
+    szin:"szürke",
+    gyartasiev:2009
+}
+
+async function ujadat(){
+
+    const res=await fetch('http://127.0.0.1:8000/ujauto',{
+        method:'post',
+        headers:{'Content-type':'application/json'},
+        body:JSON.stringify(ujauto)
+    });
+
+    const valasz=await res.json();
+
+    console.log(valasz);
+
+}
+
+async function updateadat(){
+
+    const res=await fetch('http://127.0.0.1:8000/updateauto',{
+        method:'put',
+        headers:{'Content-type':'application/json'},
+        body:JSON.stringify(updateauto)
+    });
+
+    const valasz=await res.json();
+
+    console.log(valasz);
+
+}
+
+async function deleteadat(){
+
+    const res=await fetch('http://127.0.0.1:8000/deleteauto',{
+        method:'delete',
+        headers:{'Content-type':'application/json'},
+        body:JSON.stringify(updateauto)
+    });
+
+    const valasz=await res.json();
+
+    console.log(valasz);
+
+}
+
+//ujadat();
+//updateadat();
+deleteadat();
 ```
