@@ -3,7 +3,7 @@ const app=express();
 const cors=require('cors');
 const sqlite3=require('sqlite3');
 
-const { mindenAdat, getEv, getNap } = require('./dbfunctions');
+const { mindenAdat, getEv, getNap, insertNap } = require('./dbfunctions');
 const db=new sqlite3.Database('./idojarasadatok.db');
 
 app.use(cors());
@@ -32,5 +32,11 @@ app.get('/ev/:ev',async (req,res)=>{
 app.get('/ev/:ev/honap/:honap/nap/:nap',async (req,res)=>{
     getNap(db,req.params.ev,req.params.honap,req.params.nap)
     .then(sorok=>res.json(sorok))
-    .catch(err=>res.send(err))
+    .catch(err=>res.send(err));
+});
+
+app.post('/ujnap',(req,res)=>{
+    insertNap(db,req.body)
+    .then(eredmeny=>res.status(201).json(eredmeny))
+    .catch(err=>res.send(err));
 });

@@ -44,3 +44,27 @@ module.exports.getNap=function(db,ev,honap,nap){
 
     });
 }
+
+module.exports.insertNap=function(db,props){
+    return new Promise((reject,resolve)=>{
+        db.run("insert into idojarasadatok values(?,?,?,?,?,?,?)",
+        [
+        props.ev,
+        props.honap,
+        props.nap,
+        props.ora,
+        props.homerseklet,
+        props.szelsebesseg,
+        props.paratartalom
+        ],
+        error=>{
+            if(error){
+                reject(error);
+            } else {
+                resolve({status:'Ok',message:'Adat beszúrva!'});
+            }
+        }
+        );
+    });
+
+}
