@@ -283,7 +283,7 @@ Nem csak stílusokat, hanem Bootstrap ikonokat is használhatunk, ebben az esetb
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 ```
-## React-dom használata
+## React-router-dom használata
 Telepítés
 ```js
 npm i --save react-router-dom@5.1
