@@ -283,3 +283,28 @@ Nem csak stílusokat, hanem Bootstrap ikonokat is használhatunk, ebben az esetb
 ```html
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 ```
+## React-router-dom használata
+Telepítés
+```js
+npm i --save react-router-dom@5.1
+```
+# Példa alkalmazás létező backendhez (Rick and Morty)
+Telepítés (React App létrehozása):
+```js
+npx create-react-app .
+```
+A parancs hatására a kiválasztott mappába lesz telepítve az app.
+
+Bootstrap telepítése:
+```js
+npm install --save bootstrap
+```
+Az index.js-be tegyük be a következőt:
+```js
+import 'bootstrap/dist/css/bootstrap.css';
+```
+React-router-dom telepítése:
+Telepítés
+```js
+npm i --save react-router-dom@5.1
+```
