@@ -34,6 +34,7 @@ function App() {
             
       <section className="bg-primary text-white">      
       <Header oldalCim={'Időjárás frontend'} />
+      
       </section>
       <section className="bg-dark text-white">
       <Ujadat ujAdat={ujAdat} />
