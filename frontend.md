@@ -189,7 +189,7 @@ import Lista from './components/Lista'
 function App() {
   const [listaMeret,setListaMeret]=useState(5);
   const [lista,setLista]=useState([]);
-
+ 
   useEffect(()=>{
     fetch(`https://randomuser.me/api/?results=${listaMeret}`)
     .then(res=>res.json())
